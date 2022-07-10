@@ -1,5 +1,7 @@
-package queue
+// Package setqueue is an orderless queue.
+package setqueue
 
+// SetQueue is an orderless queue.
 type SetQueue[T comparable] struct {
 	data map[T]bool
 }
