@@ -1,3 +1,5 @@
+// Package binaryprinter converts a binary tree into a string for display.
+// approach iterated from https://github.com/dragon1672/Binary-Tree-Printer
 package binaryprinter
 
 import (
