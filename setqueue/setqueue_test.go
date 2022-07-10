@@ -41,7 +41,7 @@ func TestFromSlice(t *testing.T) {
 	}
 	for _, tc := range tcs {
 		t.Run(tc.name, func(t *testing.T) {
-			q := FromSlice(tc.input...)
+			q := MakeNew(tc.input...)
 			var got []int
 			for v, ok := q.Pop(); ok; v, ok = q.Pop() {
 				got = append(got, v)

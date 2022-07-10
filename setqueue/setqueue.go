@@ -29,7 +29,7 @@ func (s *SetQueue[T]) Size() int {
 	return len(s.data)
 }
 
-func FromSlice[T comparable](s ...T) *SetQueue[T] {
+func MakeNew[T comparable](s ...T) *SetQueue[T] {
 	ret := &SetQueue[T]{}
 	for _, v := range s {
 		ret.Add(v)
