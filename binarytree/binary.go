@@ -2,6 +2,7 @@ package binarytree
 
 import (
 	"fmt"
+
 	"github.com/dragon1672/go-collections/queue"
 )
 
