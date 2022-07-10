@@ -5,12 +5,12 @@ import (
 )
 
 type treeCompare[T any] struct {
-	a, b *BinaryNode[T]
+	a, b *Node[T]
 }
 
-func BinaryTreesSame[T comparable](a, b *BinaryNode[T]) bool {
+func BinaryTreesSame[T comparable](a, b *Node[T]) bool {
 	traverse := queue.MakeNew(treeCompare[T]{a: a, b: b})
-	seen := make(map[*BinaryNode[T]]bool)
+	seen := make(map[*Node[T]]bool)
 	for traverse.Size() > 0 {
 		elem := traverse.Pop()
 		if _, exists := seen[elem.a]; exists {

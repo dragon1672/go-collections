@@ -5,24 +5,20 @@ import (
 	"github.com/dragon1672/go-collections/queue"
 )
 
-type BinaryNode[T any] struct {
+type Node[T any] struct {
 	Data        T
-	Left, Right *BinaryNode[T]
+	Left, Right *Node[T]
 }
-
-func (n *BinaryNode[T]) SetData(data T) *BinaryNode[T]            { n.Data = data; return n }
-func (n *BinaryNode[T]) SetLeft(l *BinaryNode[T]) *BinaryNode[T]  { n.Left = l; return n }
-func (n *BinaryNode[T]) SetRight(r *BinaryNode[T]) *BinaryNode[T] { n.Right = r; return n }
 
 type depthMeter[T any] struct {
 	depth int
-	n     *BinaryNode[T]
+	n     *Node[T]
 }
 
-func Height[T any](n *BinaryNode[T]) (int, error) {
+func Height[T any](n *Node[T]) (int, error) {
 	traverse := queue.MakeNew(depthMeter[T]{depth: 1, n: n})
 	maxDepth := 0
-	seen := make(map[*BinaryNode[T]]bool)
+	seen := make(map[*Node[T]]bool)
 	for traverse.Size() > 0 {
 		elem := traverse.Pop()
 		if elem.n == nil {

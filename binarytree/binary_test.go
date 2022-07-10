@@ -9,7 +9,7 @@ import (
 func TestHeight(t *testing.T) {
 	tcs := []struct {
 		name    string
-		n       *BinaryNode[string]
+		n       *Node[string]
 		want    int
 		wantErr bool
 	}{
@@ -20,68 +20,68 @@ func TestHeight(t *testing.T) {
 		},
 		{
 			name: "single",
-			n:    &BinaryNode[string]{},
+			n:    &Node[string]{},
 			want: 1,
 		},
 		{
 			name: "single child left",
-			n:    &BinaryNode[string]{Left: &BinaryNode[string]{}},
+			n:    &Node[string]{Left: &Node[string]{}},
 			want: 2,
 		},
 		{
 			name: "single child right",
-			n:    &BinaryNode[string]{Right: &BinaryNode[string]{}},
+			n:    &Node[string]{Right: &Node[string]{}},
 			want: 2,
 		},
 		{
 			name: "both children",
-			n:    &BinaryNode[string]{Left: &BinaryNode[string]{}, Right: &BinaryNode[string]{}},
+			n:    &Node[string]{Left: &Node[string]{}, Right: &Node[string]{}},
 			want: 2,
 		},
 		{
 			name: "big balanced tree",
-			n: &BinaryNode[string]{
-				Left: &BinaryNode[string]{
-					Left: &BinaryNode[string]{
-						Left: &BinaryNode[string]{
-							Left:  &BinaryNode[string]{},
-							Right: &BinaryNode[string]{},
+			n: &Node[string]{
+				Left: &Node[string]{
+					Left: &Node[string]{
+						Left: &Node[string]{
+							Left:  &Node[string]{},
+							Right: &Node[string]{},
 						},
-						Right: &BinaryNode[string]{
-							Left:  &BinaryNode[string]{},
-							Right: &BinaryNode[string]{},
+						Right: &Node[string]{
+							Left:  &Node[string]{},
+							Right: &Node[string]{},
 						},
 					},
-					Right: &BinaryNode[string]{
-						Left: &BinaryNode[string]{
-							Left:  &BinaryNode[string]{},
-							Right: &BinaryNode[string]{},
+					Right: &Node[string]{
+						Left: &Node[string]{
+							Left:  &Node[string]{},
+							Right: &Node[string]{},
 						},
-						Right: &BinaryNode[string]{
-							Left:  &BinaryNode[string]{},
-							Right: &BinaryNode[string]{},
+						Right: &Node[string]{
+							Left:  &Node[string]{},
+							Right: &Node[string]{},
 						},
 					},
 				},
-				Right: &BinaryNode[string]{
-					Left: &BinaryNode[string]{
-						Left: &BinaryNode[string]{
-							Left:  &BinaryNode[string]{},
-							Right: &BinaryNode[string]{},
+				Right: &Node[string]{
+					Left: &Node[string]{
+						Left: &Node[string]{
+							Left:  &Node[string]{},
+							Right: &Node[string]{},
 						},
-						Right: &BinaryNode[string]{
-							Left:  &BinaryNode[string]{},
-							Right: &BinaryNode[string]{},
+						Right: &Node[string]{
+							Left:  &Node[string]{},
+							Right: &Node[string]{},
 						},
 					},
-					Right: &BinaryNode[string]{
-						Left: &BinaryNode[string]{
-							Left:  &BinaryNode[string]{},
-							Right: &BinaryNode[string]{},
+					Right: &Node[string]{
+						Left: &Node[string]{
+							Left:  &Node[string]{},
+							Right: &Node[string]{},
 						},
-						Right: &BinaryNode[string]{
-							Left:  &BinaryNode[string]{},
-							Right: &BinaryNode[string]{},
+						Right: &Node[string]{
+							Left:  &Node[string]{},
+							Right: &Node[string]{},
 						},
 					},
 				},
@@ -90,11 +90,11 @@ func TestHeight(t *testing.T) {
 		},
 		{
 			name: "big unbalanced left tree",
-			n: &BinaryNode[string]{
-				Left: &BinaryNode[string]{
-					Left: &BinaryNode[string]{
-						Left: &BinaryNode[string]{
-							Left: &BinaryNode[string]{},
+			n: &Node[string]{
+				Left: &Node[string]{
+					Left: &Node[string]{
+						Left: &Node[string]{
+							Left: &Node[string]{},
 						},
 					},
 				},
@@ -103,11 +103,11 @@ func TestHeight(t *testing.T) {
 		},
 		{
 			name: "big unbalanced right tree",
-			n: &BinaryNode[string]{
-				Right: &BinaryNode[string]{
-					Right: &BinaryNode[string]{
-						Right: &BinaryNode[string]{
-							Right: &BinaryNode[string]{},
+			n: &Node[string]{
+				Right: &Node[string]{
+					Right: &Node[string]{
+						Right: &Node[string]{
+							Right: &Node[string]{},
 						},
 					},
 				},
@@ -116,11 +116,11 @@ func TestHeight(t *testing.T) {
 		},
 		{
 			name: "big zig zag tree",
-			n: &BinaryNode[string]{
-				Left: &BinaryNode[string]{
-					Right: &BinaryNode[string]{
-						Left: &BinaryNode[string]{
-							Right: &BinaryNode[string]{},
+			n: &Node[string]{
+				Left: &Node[string]{
+					Right: &Node[string]{
+						Left: &Node[string]{
+							Right: &Node[string]{},
 						},
 					},
 				},
