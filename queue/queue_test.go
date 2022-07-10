@@ -30,9 +30,9 @@ func TestStack_PopOrder(t *testing.T) {
 	}
 	for _, tc := range tcs {
 		t.Run(tc.name, func(t *testing.T) {
-			s := FromSlice(tc.input)
+			s := MakeNew(tc.input...)
 			var got []int
-			for s.Len() > 0 {
+			for s.Size() > 0 {
 				got = append(got, s.Pop())
 			}
 			f.Assert(t, got).Eq(tc.want, "should return proper value")
@@ -41,7 +41,7 @@ func TestStack_PopOrder(t *testing.T) {
 }
 
 func TestStack_Peek(t *testing.T) {
-	s := FromSlice([]int{1, 2, 3})
+	s := MakeNew(1, 2, 3)
 	f.Assert(t, s.Peek()).Eq(1, "peek should be first value")
 	f.Assert(t, s.Peek()).Eq(1, "peek shouldn't change")
 	got := s.Pop()

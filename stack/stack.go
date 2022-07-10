@@ -29,11 +29,11 @@ func (s *Stack[T]) Peek() T {
 	return s.elems[s.count-1]
 }
 
-func (s *Stack[T]) Len() int {
+func (s *Stack[T]) Size() int {
 	return s.count
 }
 
-func FromSlice[T any](s []T) *Stack[T] {
+func MakeNew[T any](s ...T) *Stack[T] {
 	ret := &Stack[T]{}
 	for _, e := range s {
 		ret.Push(e)

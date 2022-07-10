@@ -46,11 +46,11 @@ func (q *Queue[T]) Peek() T {
 	return q.head.data
 }
 
-func (q *Queue[T]) Len() int {
+func (q *Queue[T]) Size() int {
 	return q.count
 }
 
-func FromSlice[T any](s []T) *Queue[T] {
+func MakeNew[T any](s ...T) *Queue[T] {
 	ret := &Queue[T]{}
 	for _, e := range s {
 		ret.Push(e)
